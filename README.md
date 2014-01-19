@@ -1,6 +1,6 @@
 # Google maps direction arrows
 
-Google maps plugin, wich enables direction arrows. Arrows stick to screen edge and point to target point when it's not in view port and they will show distance to viewport from border of screen. Check out [demo](#demo).
+Google maps plugin, wich enables direction arrows. Arrows stick to screen edge and point to target point when it's not in view port and they will show distance to viewport from border of screen. Check out [demo](http://zarkzork.github.io/google-maps-distance-tooltip/).
 
 ![screenshot](assets/screenshot.png)
 
