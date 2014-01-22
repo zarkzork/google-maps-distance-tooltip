@@ -1,0 +1,11 @@
+{
+  "name": "google-maps-distance-tooltip",
+  "version": "0.0.1",
+  "main": ["index.css", "index.js"],
+  "ignore": [
+    "assets/*",
+    "index.html"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
