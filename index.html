@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="map-canvas"></div>
-    <div class="content">
+    <div class="content" role="content-box">
       <h1>Distance tooltips for Google Maps</h1>
       <div class="left column">
         <p>Show distance and position of markers that don't fit into current viewport of a map. Has no dependeces beyond Google Maps API.</p>
@@ -33,13 +33,13 @@ marker.setMap(map);
         <ul>
           <li><a href="https://github.com/zarkzork/google-maps-distance-tooltip">Link to github page</a></li>
           <li><a href="https://github.com/zarkzork/google-maps-distance-tooltip/archive/master.zip">Download archive</a></li>
+          <li><a href="#" role="start-demo">Demo</li>
         </ul>
-
       </div><div class="right column">
         <img src="assets/screenshot.png" alt="Image">
       </div>
+      <a href="#" class="show" role="stop-demo">V</a>
     </div>
-
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA70u925z8KpJwKEY3zNXg95coI0vuzd1E&sensor=false&libraries=geometry">
     </script>
@@ -75,6 +75,29 @@ marker.setMap(map);
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
+
+      var startDemoButton = document.querySelector('[role="start-demo"]'),
+          stopDemoButton = document.querySelector('[role="stop-demo"]'),
+          contentBox = document.querySelector('[role="content-box"]');
+
+      startDemoButton.addEventListener('click', function(e){ e && e.preventDefault(); addClass(contentBox, 'hidden'); });
+      stopDemoButton.addEventListener('click', function(e){ e && e.preventDefault(); removeClass(contentBox, 'hidden'); });
+
+      function addClass(el, className){
+        if (el.classList){
+          el.classList.add(className);
+         } else {
+          el.className += ' ' + className;
+        }
+      }
+
+      function removeClass(el, className){
+        if (el.classList){
+          el.classList.remove(className);
+        } else {
+          el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+        }
+      }
     </script>
   </body>
 </html>
