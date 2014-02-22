@@ -1,5 +1,20 @@
 window.DistanceOverlay = (function(){
 
+    /**
+     *
+     * Google maps plugin to show direction and distance to markers
+     * that don't fit into viewport.
+     *
+     * @constructor DistanceOverlay
+     *
+     * @param {Object} options Options to initialize constructor with.
+     * @param {google.maps.LatLng} options.position Distance overlay
+     * target.
+     * @param {Function} [options.formatDistance] callback to
+     * generate content of tooltip, takes distance in meters and
+     * returns string.
+     *
+     */
     function DistanceOverlay(options) {
         this.options = options;
         this.target = options.position;
@@ -74,6 +89,8 @@ window.DistanceOverlay = (function(){
     };
 
     DistanceOverlay.prototype.formatDistance = function(distance){
+        if(typeof(this.options.formatDistance) === 'function')
+            return this.options.formatDistance(distance);
         if(distance < 500){
             return Math.round(distance) + ' m';
         } else {
